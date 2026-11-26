@@ -1,36 +1,36 @@
-# 🎓 NIAMT Project
+# NIAMT Project
 
-<p align="center"><img src="https://capsule-render.vercel.app/api?type=waving&color=0:1e3a8a,100:0891b2&height=180&section=header&text=NIAMT%20Project&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=35" alt="NIAMT project banner"/></p>
+Academic project repository from a research internship at NIAMT, Ranchi. It contains a browser-based **Medical Symptom Checker** that uses the Google Gemini API, a browser **object-detection demo**, and supporting project documents.
 
-<p align="center"><b>An academic/project repository combining a web interface, project documentation and an AI object-detection component.</b></p>
+## Contents
 
-## 🧭 What’s Inside
-- Web interface: `index.html`, `script.js`, `stylr.css`
-- `ai-object-detection-master/`: object-detection project resources
-- `Abhishek_project_report[1].pdf`: project report
-- `Dr. DK Prabhakar.xlsx`: spreadsheet/project data
-- `oriantation Day1.png`: project/orientation visual asset
+| Path | Description |
+|---|---|
+| `index.html`, `script.js`, `stylr.css` | Medical Symptom Checker web page. The user enters a Gemini API key, symptoms, age and gender, and the page sends them to the Gemini `generateContent` endpoint (`gemini-pro`) and displays the response |
+| `ai-object-detection-master/` | Browser object-detection demo (camera + ml5.js COCO-SSD, Materialize UI, FPS slider and on/off toggle). Based on a third-party open-source project; see its own `README.md` for credits |
+| `abhishek/` | Earlier copy of the symptom checker page (HTML/CSS/JS) |
+| `Abhishek_project_report[1].pdf` | Project report |
+| `Dr. DK Prabhakar.xlsx`, `oriantation Day1.png` | Supporting project material |
 
-## 🧩 High-Level Architecture
-```mermaid
-graph TD
-A[Web Interface] --> B[JavaScript Logic]
-B --> C[AI Object Detection Component]
-C --> D[Detection / Project Output]
-E[Project Report & Data] --> F[Documentation]
+## Run locally
+
+No build step is needed. Serve the folder with any static server and open it in a browser:
+
+```bash
+python -m http.server 8000
+# Symptom checker:   http://localhost:8000/
+# Object detection:  http://localhost:8000/ai-object-detection-master/   (allow camera access)
 ```
 
-## 🚀 Web Portion
-The root HTML/CSS/JavaScript files can be opened through a browser or served using any static HTTP server.
+For the symptom checker, create a free key in [Google AI Studio](https://aistudio.google.com/app/apikey) and paste it into the page.
 
-## 🤖 AI Component
-The `ai-object-detection-master` directory contains the object-detection portion of the project. Consult its own files/documentation for model-specific dependencies and execution instructions.
+## Tech
 
-## 📚 Academic Documentation
-The repository includes a project report and supporting spreadsheet. These materials provide context for the academic work and should be kept synchronized with major project changes.
+HTML, CSS, vanilla JavaScript, Google Gemini REST API, ml5.js (COCO-SSD).
 
-## ⚠️ Data & Privacy
-Review documents and spreadsheets before publishing if they contain personal, institutional or confidential information.
+## Important notes
 
-## 📄 License
-No license file is currently declared.
+- **Not medical advice.** The symptom checker is a learning/demo project and must not be used for diagnosis.
+- **API keys:** keys must never be committed. Enter yours in the page's input field; a browser-only app cannot keep a key secret, so a real deployment should call Gemini through a small backend.
+- **Review before sharing:** the report, spreadsheet and images may contain personal or institutional information. Check them before keeping this repository public.
+- No license is currently declared.
